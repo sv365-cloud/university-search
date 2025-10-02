@@ -1,0 +1,38 @@
+[
+    {
+        "query": "Introductory courses in Africana Studies",
+        "precision": 1.0,
+        "recall": 1.0,
+        "latency": 4.294145822525024
+    },
+    {
+        "query": "Africana Studies courses with RPP attribute",
+        "precision": 0.0,
+        "recall": 0.0,
+        "latency": 3.2816977500915527
+    },
+    {
+        "query": "Seminars in Africana Studies for juniors or seniors",
+        "precision": 0.5,
+        "recall": 0.2,
+        "latency": 3.6886627674102783
+    },
+    {
+        "query": "Graduate level courses in Africana Studies",
+        "precision": 1.0,
+        "recall": 0.2,
+        "latency": 3.4243967533111572
+    },
+    {
+        "query": "American Studies first-year seminars with writing",
+        "precision": 0.0,
+        "recall": 0.0,
+        "latency": 2.3930513858795166
+    },
+    {
+        "query": "Sophomore seminars in American Studies",
+        "precision": 0.0,
+        "recall": 0.0,
+        "latency": 2.481232166290283
+    }
+]

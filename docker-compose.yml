@@ -1,0 +1,13 @@
+services:
+  university-search:
+    build: .
+    container_name: university-search-app
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      # Persist the vector database
+      - ./database:/app/database
+    restart: unless-stopped
+

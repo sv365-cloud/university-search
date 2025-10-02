@@ -1,0 +1,17 @@
+beautifulsoup4==4.14.2
+fastapi==0.118.0
+grequests==0.7.0
+gunicorn==23.0.0
+langchain==0.3.27
+langchain_google_genai==2.1.12
+numpy==2.3.3
+pandas==2.3.3
+pydantic==2.11.9
+python-dotenv==1.1.1
+requests==2.32.5
+streamlit==1.50.0
+faiss-cpu==1.9.0
+langchain-community==0.3.27
+langchain-core==0.3.75
+uvicorn==0.34.0
+pypdf==5.1.0

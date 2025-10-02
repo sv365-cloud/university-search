@@ -1,0 +1,26 @@
+[
+    {
+        "query": "Introductory courses in Africana Studies",
+        "relevant_codes": ["0090"]
+    },
+    {
+        "query": "Africana Studies courses with RPP attribute",
+        "relevant_codes": ["0090", "0300", "0670", "1112", "1330"]
+    },
+    {
+        "query": "Seminars in Africana Studies for juniors or seniors",
+        "relevant_codes": ["1330", "1761", "2002", "2050", "2101"]
+    },
+    {
+        "query": "Graduate level courses in Africana Studies",
+        "relevant_codes": ["2002", "2050", "2101", "2970", "2990"]
+    },
+    {
+        "query": "American Studies first-year seminars with writing",
+        "relevant_codes": ["0090A", "0090C"]
+    },
+    {
+        "query": "Sophomore seminars in American Studies",
+        "relevant_codes": ["0170G"]
+    }
+]

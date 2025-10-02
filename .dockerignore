@@ -1,0 +1,41 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+env/
+rag-env/
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+Testing_code.ipynb
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# OS
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Documentation (already in image)
+readme.md
+
+# Evaluation (not needed for production)
+evaluation_results.json
+small_eval_set.json
+
+# Scrapers (not needed for production)
+brown_uni_scraper/
+LSU-course-catalog-scraper/
