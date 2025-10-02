@@ -2,6 +2,7 @@
 import streamlit as st
 from rag_backend import RAGBackend
 import pandas as pd
+import time
 
 # Initialize backend once
 @st.cache_resource
@@ -21,44 +22,84 @@ st.sidebar.header("Filters")
 dataset_filter = st.sidebar.multiselect(
     "Select Dataset",
     options=[path.split("/")[-1] for path in rag.json_files],
-    default=[]
+    default=[],
+    key="dataset_filter"
 )
 
-department_filter = st.sidebar.text_input("Department (e.g. CSCI, MATH, ENGL)", "")
+department_filter = st.sidebar.text_input(
+    "Department (e.g. CSCI, MATH, ENGL)", "", key="department_filter"
+)
 
-meeting_day_filter = st.sidebar.text_input("Meeting Day (e.g. M, T, W, Th, F, TTh, MWF)", "")
+meeting_day_filter = st.sidebar.text_input(
+    "Meeting Day (e.g. M, T, W, Th, F, TTh, MWF)", "", key="meeting_day_filter"
+)
 
-k_results = st.sidebar.slider("Number of results", 5, 25, 10)
+body_search_filter = st.sidebar.text_area(
+    "Body Search (applies directly in retrieval)", 
+    placeholder="Enter keywords to refine retrieval...",
+    key="body_search_filter"
+)
 
-sort_by_score = st.sidebar.checkbox("Sort by similarity score", value=True)
+k_results = st.sidebar.slider(
+    "Number of results", 5, 25, 10, key="k_results"
+)
+
+sort_by_score = st.sidebar.checkbox(
+    "Sort by similarity score", value=True, key="sort_by_score"
+)
 
 # Query input
-query = st.text_input("Enter your query:", placeholder="e.g. Computer Science courses about AI")
+query = st.text_input(
+    "Enter your query:", 
+    placeholder="e.g. Computer Science courses about AI", 
+    key="main_query"
+)
 
 if query:
+    # ✅ Build refined query dynamically (only add filters if provided)
+    refined_query_parts = [query]
+
+    if dataset_filter:
+        refined_query_parts.append(f"Dataset: {', '.join(dataset_filter)}")
+
+    if department_filter.strip():
+        refined_query_parts.append(f"Department: {department_filter.strip()}")
+
+    if meeting_day_filter.strip():
+        refined_query_parts.append(f"Meeting Day: {meeting_day_filter.strip()}")
+
+    if body_search_filter.strip():
+        refined_query_parts.append(f"Body Search: {body_search_filter.strip()}")
+
+    refined_query = " | ".join(refined_query_parts)
+
     with st.spinner("Retrieving courses..."):
-        import time
         start_time = time.time()
-        results = rag.get_response(query)
+        results = rag.get_response(
+            refined_query,
+            body_search=body_search_filter.strip() if body_search_filter.strip() else None
+        )
         elapsed_time = time.time() - start_time
 
     # Show response time
     st.markdown(f"⏱️ **Response Time:** {elapsed_time:.2f} seconds")
 
+    # Show generated answer
     st.subheader("Generated Answer")
     st.info(results["answer"])
 
     # Process retrieved courses
     courses = results["retrieved_courses"]
 
-    if dataset_filter:
-        courses = [c for c in courses if c.get("source") in dataset_filter]
+    # # ✅ Safeguard: filter results again after retrieval
+    # if dataset_filter:
+    #     courses = [c for c in courses if c.get("source") in dataset_filter]
 
-    if department_filter:
-        courses = [c for c in courses if c.get("department", "").lower().startswith(department_filter.lower())]
+    # if department_filter:
+    #     courses = [c for c in courses if c.get("department", "").lower().startswith(department_filter.lower())]
 
-    if meeting_day_filter:
-        courses = [c for c in courses if meeting_day_filter.lower() in c.get("time", "").lower()]
+    # if meeting_day_filter:
+    #     courses = [c for c in courses if meeting_day_filter.lower() in c.get("time", "").lower()]
 
     if sort_by_score:
         courses = sorted(courses, key=lambda x: x.get("score", 0), reverse=True)
@@ -95,5 +136,3 @@ if query:
                     """,
                     unsafe_allow_html=True
                 )
-
-
