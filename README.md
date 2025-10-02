@@ -116,6 +116,39 @@ The system follows a modular RAG-based architecture designed for flexibility and
 
 ## Setup Instructions
 
+### 🔹 Local Setup (With Docker)
+
+#### Prerequisites
+
+- Docker installed ([Get Docker](https://docs.docker.com/get-docker/))
+- Docker Compose (included with Docker Desktop)
+
+#### Step 1: Create `.env` file
+
+Create a `.env` file with your Google Gemini API key:
+
+```bash
+GOOGLE_API_KEY=your_google_api_key_here
+```
+
+Get your API key from: https://makersuite.google.com/app/apikey
+
+#### Step 2: Build and Run
+
+```bash
+docker-compose up --build
+```
+
+The app will be available at: **http://localhost:8501**
+
+#### Step 3: Stop
+
+```bash
+docker-compose down
+```
+
+---
+
 ### 🔹 Local Setup (Without Docker)
 
 #### Step 1: Clone Repo
@@ -164,39 +197,6 @@ streamlit run app.py
 ```
 
 Visit: `http://localhost:8501`
-
----
-
-### 🔹 Local Setup (With Docker)
-
-#### Prerequisites
-
-- Docker installed ([Get Docker](https://docs.docker.com/get-docker/))
-- Docker Compose (included with Docker Desktop)
-
-#### Step 1: Create `.env` file
-
-Create a `.env` file with your Google Gemini API key:
-
-```bash
-GOOGLE_API_KEY=your_google_api_key_here
-```
-
-Get your API key from: https://makersuite.google.com/app/apikey
-
-#### Step 2: Build and Run
-
-```bash
-docker-compose up --build
-```
-
-The app will be available at: **http://localhost:8501**
-
-#### Step 3: Stop
-
-```bash
-docker-compose down
-```
 
 ---
 
