@@ -1,4 +1,4 @@
-# University Course Search with RAG & Semantic Search
+# University Course Search with RAG
 
 ## Introduction
 
@@ -123,7 +123,14 @@ The system follows a modular RAG-based architecture designed for flexibility and
 - Docker installed ([Get Docker](https://docs.docker.com/get-docker/))
 - Docker Compose (included with Docker Desktop)
 
-#### Step 1: Create `.env` file
+#### Step 1: Clone Repo
+
+```bash
+git clone https://github.com/sv365-cloud/university-search.git
+cd university-course-search
+```
+
+#### Step 2: Create `.env` file
 
 Create a `.env` file with your Google Gemini API key:
 
@@ -133,7 +140,7 @@ GOOGLE_API_KEY=your_google_api_key_here
 
 Get your API key from: https://makersuite.google.com/app/apikey
 
-#### Step 2: Build and Run
+#### Step 3: Build and Run
 
 ```bash
 docker-compose up --build
@@ -141,7 +148,7 @@ docker-compose up --build
 
 The app will be available at: **http://localhost:8501**
 
-#### Step 3: Stop
+#### Step 4: Stop
 
 ```bash
 docker-compose down
@@ -154,8 +161,8 @@ docker-compose down
 #### Step 1: Clone Repo
 
 ```bash
-git clone https://github.com/yourusername/university-course-search-rag.git
-cd university-course-search-rag
+git clone https://github.com/sv365-cloud/university-search.git
+cd university-course-search
 ```
 
 #### Step 2: Create Virtual Environment
