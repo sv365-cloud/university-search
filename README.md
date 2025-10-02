@@ -127,7 +127,7 @@ The system follows a modular RAG-based architecture designed for flexibility and
 
 ```bash
 git clone https://github.com/sv365-cloud/university-search.git
-cd university-course-search
+cd university-search
 ```
 
 #### Step 2: Create `.env` file
@@ -162,7 +162,7 @@ docker-compose down
 
 ```bash
 git clone https://github.com/sv365-cloud/university-search.git
-cd university-course-search
+cd university-search
 ```
 
 #### Step 2: Create Virtual Environment
@@ -229,8 +229,8 @@ sudo apt install python3-pip python3-venv -y
 4. **Clone Repo & Setup**
 
 ```bash
-git clone https://github.com/yourusername/university-course-search-rag.git
-cd university-course-search-rag
+git clone https://github.com/sv365-cloud/university-search.git
+cd university-search
 python3 -m venv rag-env
 source rag-env/bin/activate
 pip install -r requirements.txt
